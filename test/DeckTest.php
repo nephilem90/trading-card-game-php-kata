@@ -10,9 +10,7 @@ class DeckTest extends PHPUnit\Framework\TestCase
      */
     public function createFromArray()
     {
-        $card = $this->getMockBuilder('Object\CardInterface')
-            ->disableOriginalConstructor()
-            ->getMock();
+        $card = $this->createMock(Object\CardInterface::class);
         $card->method('set');
         $cardList = [
             ['property' => 1],
@@ -20,4 +18,19 @@ class DeckTest extends PHPUnit\Framework\TestCase
         $deck = new Deck($card, $cardList);
         $this->assertTrue(is_a($deck->getFirst(), 'Object\CardInterface'));
     }
+
+//    /**
+//     * @test
+//     */
+//    public function deckMulligan()
+//    {
+//        $card = $this->createMock(Object\CardInterface::class);
+//        $card->method('set');
+//        $cardList = [
+//            ['property' => 1],
+//            ['property' => 2],
+//        ];
+//        $deck = new Deck($card, $cardList);
+//        $mulliganMethod = $this->getMockClass();
+//    }
 }
