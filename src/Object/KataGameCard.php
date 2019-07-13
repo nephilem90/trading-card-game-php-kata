@@ -23,4 +23,20 @@ class KataGameCard implements CardInterface
     {
         return $this->mana;
     }
+
+    /**
+     * @return int
+     */
+    public function getDamage(): int
+    {
+        return $this->getMana();
+    }
+
+    public function toArray()
+    {
+        return [
+            'mana' => $this->getMana(),
+            'damage' => $this->getDamage()
+        ];
+    }
 }
