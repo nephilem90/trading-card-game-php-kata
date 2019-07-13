@@ -31,6 +31,15 @@ class DeckTest extends PHPUnit\Framework\TestCase
 //            ['property' => 2],
 //        ];
 //        $deck = new Deck($card, $cardList);
-//        $mulliganMethod = $this->getMockClass();
+//        $mulliganMethod = $this->createMock(Object\MulliganMethod::class);
+//        $mulliganMethod->expects($this->at(0))
+//            ->method('getNextTopCard')
+//            ->will($this->returnValue(2));
+//        $mulliganMethod->expects($this->at(1))
+//            ->method('getNextTopCard')
+//            ->will($this->returnValue(1));
+//        $mulliganMethod->method('setNumberCard');
+//
+//        $deck->mulligan($mulliganMethod);
 //    }
 }

@@ -27,4 +27,9 @@ class Deck
     {
         return array_pop($this->cardList);
     }
+
+    public function mulligan(MulliganMethod $mulliganMethod)
+    {
+        $mulliganMethod->setNumberCard(count($this->cardList));
+    }
 }

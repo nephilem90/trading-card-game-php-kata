@@ -13,11 +13,18 @@ class MulliganMethod
      * MulliganMethod constructor.
      * @param int $numberCard
      */
-    public function __construct($numberCard)
+    public function __construct($numberCard = 0)
     {
         $this->numberCard = $numberCard;
     }
 
+    /**
+     * @param int $numberCard
+     */
+    public function setNumberCard(int $numberCard): void
+    {
+        $this->numberCard = $numberCard;
+    }
 
     /**
      * @return int|bool
