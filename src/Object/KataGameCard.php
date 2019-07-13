@@ -11,14 +11,9 @@ class KataGameCard implements CardInterface
      */
     private $mana;
 
-    private function __construct($data = [])
+    public function set($data = [])
     {
         $this->mana = $data['mana'];
-    }
-
-    public static function createCardFromArray($data = [])
-    {
-        return new self($data);
     }
 
     /**

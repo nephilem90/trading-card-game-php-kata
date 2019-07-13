@@ -10,7 +10,8 @@ class KataGameCardTest extends PHPUnit\Framework\TestCase
      */
     public function createCardFromArray()
     {
-        $card = KataGameCard::createCardFromArray(['mana' => 1]);
+        $card = new KataGameCard();
+        $card->set(['mana' => 1]);
         $this->assertEquals(1, $card->getMana());
     }
 }
