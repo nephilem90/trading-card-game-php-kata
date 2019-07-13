@@ -4,7 +4,7 @@
 namespace Object;
 
 
-class Card
+class KataGameCard implements CardInterface
 {
     /**
      * @var int
@@ -16,7 +16,7 @@ class Card
         $this->mana = $data['mana'];
     }
 
-    public static function createFromArray($data = [])
+    public static function createCardFromArray($data = [])
     {
         return new self($data);
     }
