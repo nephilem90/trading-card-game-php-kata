@@ -31,5 +31,19 @@ class Deck
     public function mulligan(MulliganMethod $mulliganMethod)
     {
         $mulliganMethod->setNumberCard(count($this->cardList));
+        $newCardList = [];
+
+        while ($nextFirstCard = $mulliganMethod->getNextTopCard()) {
+            $actualCard = 0;
+            foreach ($this->cardList as $index => $card) {
+                $actualCard++;
+                if ($actualCard != $nextFirstCard) {
+                    continue;
+                }
+                $newCardList[] = clone($card);
+                unset($this->cardList[$index]);
+            }
+        }
+        $this->cardList = $newCardList;
     }
 }
