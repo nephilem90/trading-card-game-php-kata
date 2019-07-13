@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Object;
+namespace Game;
 
 
-class KataGameCard implements CardInterface
+class Card implements \Object\CardInterface
 {
     /**
      * @var int

@@ -1,7 +1,7 @@
 <?php
 
 
-use Object\KataGameCard;
+use Game\Card;
 
 class KataGameCardTest extends PHPUnit\Framework\TestCase
 {
@@ -10,7 +10,7 @@ class KataGameCardTest extends PHPUnit\Framework\TestCase
      */
     public function createCardFromArray()
     {
-        $card = new KataGameCard();
+        $card = new Card();
         $card->set(['mana' => 1]);
         $this->assertEquals(1, $card->getMana());
     }
@@ -20,7 +20,7 @@ class KataGameCardTest extends PHPUnit\Framework\TestCase
      */
     public function damageAndManaIsEquals()
     {
-        $card = new KataGameCard();
+        $card = new Card();
         $card->set(['mana' => 1]);
         $this->assertEquals(1, $card->getMana());
         $this->assertEquals(1, $card->getDamage());
@@ -31,7 +31,7 @@ class KataGameCardTest extends PHPUnit\Framework\TestCase
      */
     public function toArray()
     {
-        $card = new KataGameCard();
+        $card = new Card();
         $card->set(['mana' => 1]);
         $cardArray = $card->toArray();
         $this->assertEquals(1, $cardArray['mana']);
