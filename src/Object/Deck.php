@@ -28,12 +28,12 @@ class Deck
         return array_pop($this->cardList);
     }
 
-    public function mulligan(MulliganMethod $mulliganMethod)
+    public function mix(MixMethod $mixMethod)
     {
-        $mulliganMethod->setNumberCard(count($this->cardList));
+        $mixMethod->setNumberCard(count($this->cardList));
         $newCardList = [];
 
-        while ($nextFirstCard = $mulliganMethod->getNextTopCard()) {
+        while ($nextFirstCard = $mixMethod->getNextTopCard()) {
             $actualCard = 0;
             foreach ($this->cardList as $index => $card) {
                 $actualCard++;

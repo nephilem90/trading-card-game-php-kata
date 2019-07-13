@@ -37,26 +37,26 @@ class DeckTest extends PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function deckMulligan()
+    public function deckMix()
     {
         $cardList = [
             ['mana' => 1],
             ['mana' => 2],
         ];
         $deck = new Deck(new Object\KataGameCard(), $cardList);
-        $mulliganMethod = $this->createMock(Object\MulliganMethod::class);
-        $mulliganMethod->expects($this->at(1))
+        $mixMethod = $this->createMock(Object\MixMethod::class);
+        $mixMethod->expects($this->at(1))
             ->method('getNextTopCard')
             ->will($this->returnValue(2));
-        $mulliganMethod->expects($this->at(2))
+        $mixMethod->expects($this->at(2))
             ->method('getNextTopCard')
             ->will($this->returnValue(1));
-        $mulliganMethod->expects($this->at(3))
+        $mixMethod->expects($this->at(3))
             ->method('getNextTopCard')
             ->will($this->returnValue(false));
-        $mulliganMethod->method('setNumberCard');
+        $mixMethod->method('setNumberCard');
 
-        $deck->mulligan($mulliganMethod);
+        $deck->mix($mixMethod);
 
         /** @var Object\KataGameCard $card */
         $card = $deck->getFirst();

@@ -1,10 +1,10 @@
 <?php
 
 
-use Object\MulliganMethod;
+use Object\MixMethod;
 use PHPUnit\Framework\TestCase;
 
-class MulliganMethodTest extends TestCase
+class MixMethodTest extends TestCase
 {
     /**
      * @test
@@ -12,7 +12,7 @@ class MulliganMethodTest extends TestCase
     public function returnNumberForDeckDimensionOrFalse()
     {
         $deckDimension = 10;
-        $mulliganMethod = new MulliganMethod($deckDimension);
+        $mulliganMethod = new MixMethod($deckDimension);
         $this->returnIntForDeckDimensionOrFalse($mulliganMethod, $deckDimension);
     }
 
@@ -21,7 +21,7 @@ class MulliganMethodTest extends TestCase
      */
     public function setNumberCard()
     {
-        $mulliganMethod = new MulliganMethod();
+        $mulliganMethod = new MixMethod();
         $baseDeckDimension = 10;
         for ($i = 0; $i < 4; $i++) {
             $actualDeckDimension = $baseDeckDimension + $i;
@@ -34,7 +34,7 @@ class MulliganMethodTest extends TestCase
     }
 
     private function returnIntForDeckDimensionOrFalse(
-        MulliganMethod $mulliganMethod,
+        MixMethod $mulliganMethod,
         $deckDimension
     ) {
         for ($i = 0; $i < $deckDimension; $i++) {

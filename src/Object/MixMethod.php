@@ -4,7 +4,7 @@
 namespace Object;
 
 
-class MulliganMethod
+class MixMethod
 {
     /** @var int */
     private $numberCard;
