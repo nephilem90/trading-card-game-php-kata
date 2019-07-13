@@ -14,7 +14,7 @@ class MulliganMethodTest extends TestCase
         $deckDimension = 10;
         $mulliganMethod = new MulliganMethod($deckDimension);
         for ($i = 0; $i < $deckDimension; $i++) {
-            $mulliganMethod->getNextTopCard();
+            $this->assertTrue(is_int($mulliganMethod->getNextTopCard()));
         }
         $this->assertTrue($mulliganMethod->getNextTopCard() === false);
     }
