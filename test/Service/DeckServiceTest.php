@@ -13,14 +13,16 @@ class DeckServiceTest extends TestCase
      */
     public function fillDeckFromCardList()
     {
+        $card1 = ['mana' => 1];
+        $card2 = ['mana' => 2];
         $cardList = [
-            ['mana' => 1],
-            ['mana' => 2],
+            $card1,
+            $card2,
         ];
         $deckService = new DeckService();
         /** @var Deck $deck */
         $deck = $deckService->fillDeckFromCardList(new Deck(), new Card(), $cardList);
-        $this->assertEquals(2, $deck->getFirst()->getMana());
-        $this->assertEquals(1, $deck->getFirst()->getMana());
+        $this->assertEquals($card2['mana'], $deck->getFirst()->toArray()['mana']);
+        $this->assertEquals($card1['mana'], $deck->getFirst()->toArray()['mana']);
     }
 }
