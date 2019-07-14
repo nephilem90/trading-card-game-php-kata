@@ -11,16 +11,9 @@ class Deck
      */
     private $cardList;
 
-    public function __construct(CardInterface $card, $cardsData = [])
+    public function __construct()
     {
-        $cardList = [];
-        foreach ($cardsData as $cardData) {
-            /** @var CardInterface $newCard */
-            $newCard = new $card;
-            $newCard->set($cardData);
-            $cardList[] = $newCard;
-        }
-        $this->cardList = $cardList;
+        $this->cardList = [];
     }
 
     public function getFirst()
@@ -45,5 +38,10 @@ class Deck
             }
         }
         $this->cardList = $newCardList;
+    }
+
+    public function add(CardInterface $card)
+    {
+        $this->cardList[] = $card;
     }
 }

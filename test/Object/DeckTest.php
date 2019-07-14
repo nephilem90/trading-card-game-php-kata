@@ -9,30 +9,14 @@ class DeckTest extends PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function createFromArray()
+    public function addAndGetCard()
     {
-        $card = $this->createMock(Object\CardInterface::class);
-        $card->method('set');
-        $cardList = [
-            ['property' => 1],
-        ];
-        $deck = new Deck($card, $cardList);
-        $this->assertTrue(is_a($deck->getFirst(), 'Object\CardInterface'));
-    }
-
-    /**
-     * @test
-     */
-    public function creteOneSingleCardDeck()
-    {
-        $cardList = [
-            ['mana' => 1],
-        ];
-        $deck = new Deck(new Card(), $cardList);
-        /** @var Card $card */
-        $card = $deck->getFirst();
-        $this->assertEquals(1, $card->getDamage());
-        $this->assertEquals(1, $card->getMana());
+        $card = $this->createMock(\Object\CardInterface::class);
+        $card->method('toArray')
+            ->willReturn(['property' => 1]);
+        $deck = new Deck();
+        $deck->add($card);
+        $this->assertEquals(['property' => 1], $deck->getFirst()->toArray());
     }
 
     /**
@@ -40,11 +24,20 @@ class DeckTest extends PHPUnit\Framework\TestCase
      */
     public function deckMix()
     {
-        $cardList = [
-            ['mana' => 1],
-            ['mana' => 2],
-        ];
-        $deck = new Deck(new Card(), $cardList);
+        $cardArray1 = ['mana' => 1];
+        $cardArray2 = ['mana' => 2];
+
+        $card1 = $this->createMock(\Object\CardInterface::class);
+        $card1->method('toArray')
+            ->willReturn($cardArray1);
+        $card2 = $this->createMock(\Object\CardInterface::class);
+        $card2->method('toArray')
+            ->willReturn($cardArray2);
+
+        $deck = new Deck();
+        $deck->add($card2);
+        $deck->add($card1);
+
         $mixMethod = $this->createMock(Object\MixMethod::class);
         $mixMethod->expects($this->at(1))
             ->method('getNextTopCard')
@@ -59,15 +52,7 @@ class DeckTest extends PHPUnit\Framework\TestCase
 
         $deck->mix($mixMethod);
 
-        /** @var Card $card */
-        $card = $deck->getFirst();
-        $this->assertEquals(1, $card->getDamage());
-        $this->assertEquals(1, $card->getMana());
-
-        /** @var Card $card */
-        $card = $deck->getFirst();
-        $this->assertEquals(2, $card->getDamage());
-        $this->assertEquals(2, $card->getMana());
-
+        $this->assertEquals($cardArray2, $deck->getFirst()->toArray());
+        $this->assertEquals($cardArray1, $deck->getFirst()->toArray());
     }
 }
